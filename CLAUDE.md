@@ -22,9 +22,9 @@ Single-page React 19 app scaffolded with Vite. Entry is `src/main.jsx`, which mo
 
 - **`Summary.jsx`** — receives `transactions` and computes `totalIncome`, `totalExpenses`, and `balance` internally for display.
 - **`TransactionForm.jsx`** — owns its own add-form field state (`description`, `amount`, `type`, `category`) and reports a completed transaction up via the `onAddTransaction` callback. App appends it to `transactions`.
-- **`TransactionList.jsx`** — owns its own filter state (`filterType`, `filterCategory`) and renders the filtered table.
+- **`TransactionList.jsx`** — owns its own filter state (`filterType`, `filterCategory`), renders the filtered table, and has a per-row delete button that calls the `onDeleteTransaction` callback with the row's `id`.
 
-State lives as close to where it's used as possible: only `transactions` is lifted into `App`; form and filter state are local to their respective child components. There is no router, no backend, and no persistence — the transaction list is seeded from a hardcoded array and lives only in memory (a reload resets it). Adding a transaction appends to that in-memory array; there is no delete or edit. Styling is plain CSS in `src/App.css` and `src/index.css`, referenced by className.
+App holds two callbacks over the `transactions` array: `handleAddTransaction` (appends a new transaction) and `handleDeleteTransaction` (removes by `id` via `filter`). State lives as close to where it's used as possible: only `transactions` is lifted into `App`; form and filter state are local to their respective child components. There is no router, no backend, and no persistence — the transaction list is seeded from a hardcoded array and lives only in memory (a reload resets it). Transactions can be added and deleted, but there is no edit. Styling is plain CSS in `src/App.css` and `src/index.css`, referenced by className (the delete button uses `.delete-btn`).
 
 ## Context: this is a course starter
 
